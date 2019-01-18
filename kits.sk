@@ -1,0 +1,143 @@
+#------------------------------#
+#                              #
+#  Kits Plugin by tamilpp25    #
+#                              #
+#------------------------------#
+
+options:
+	version: 1.0 #Do not change this!!!
+
+
+on load:
+	send "7[&bKits&r] - &2Loaded Successfully" to console
+	if text from "https://pastebin.com/raw/3ytvjTL1" is not "{@version}":
+		set {_version} to text from "https://pastebin.com/raw/3ytvjTL1"
+		send "[&bKits&r] - &2Running current version: {@version}" to console
+		send "[&bKits&r] - &cUpdate available, version: %{_version}%" to console
+	if text from "https://pastebin.com/raw/3ytvjTL1" is "{@version}":
+		send "[&bKits&r] - &2Running current version: {@version}" to console
+		
+on join:
+	wait 1 second
+	if player has permission "server.admin":
+		if text from "https://pastebin.com/raw/3ytvjTL1" is not "{@version}":
+			set {_version} to text from "https://pastebin.com/raw/3ytvjTL1"
+			send "[&bKits&r] - &2Update Available!!" to player
+			send "[&bKits&r] - &2Running current version: {@version}" to player
+			send "[&bKits&r] - &cUpdate available, version: %{_version}%" to player
+
+
+
+on load:
+    wait 10 seconds
+    if {gamerule} is not set:
+        make console execute command "gamerule sendCommandFeedback false"
+        set {gamerule} to "true"
+    else:
+        stop
+
+command /kits [<text>]:
+	usage:&c/kits <kitname>
+	trigger:
+		if arg-1 is not set:
+			send "&c----------------Kits-----------------"
+			send "&7[&bKits&7] &6Kits plugin &fMade by &btamilpp25"
+			send "&fVersion: &6{@version}"
+			send "&cUsage : &6/kits (kitname)"
+			send "&bavailable kits:&cGOD, &fIron , &6Gold , &bDiamond , &7Starter, &dWitch"
+			send "&c------------------------------------"
+		if arg-1 is "iron":
+			if player has permission "kit.iron":
+				make console execute command "give %player% iron_sword 1 0 {ench:[{id:16,lvl:1}]}"
+				make console execute command "give %player% iron_pickaxe 1"
+				make console execute command "give %player% iron_axe 1"
+				make console execute command "give %player% iron_shovel 1"
+				make console execute command "give %player% iron_hoe 1"
+				make console execute command "give %player% iron_helmet 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% iron_chestplate 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% iron_leggings 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% iron_boots 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% golden_apple 10"
+				make console execute command "give %player% cooked_beef 16"
+				send "&aYou have received your &fIron kit!"
+			else:
+				send "&cYou havent unlocked that kit yet!"
+		if arg-1 is "gold":
+			if player has permission "kit.gold":
+				make console execute command "give %player% golden_sword 1 0 {ench:[{id:16,lvl:1}]}"
+				make console execute command "give %player% golden_pickaxe 1"
+				make console execute command "give %player% golden_axe 1"
+				make console execute command "give %player% golden_shovel 1"
+				make console execute command "give %player% golden_hoe 1"
+				make console execute command "give %player% golden_helmet 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% golden_chestplate 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% golden_leggings 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% golden_boots 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% golden_apple 10"
+				make console execute command "give %player% cooked_beef 16"
+				send "&aYou have received your &6Gold kit!"
+			else:
+				send "You havent unlocked that kit yet!"
+		if arg-1 is "diamond":
+			if player has permission "kit.diamond":
+				make console execute command "give %player% diamond_sword 1 0 {ench:[{id:16,lvl:1}]}"
+				make console execute command "give %player% diamond_pickaxe 1 0 {ench:[{id:32,lvl:2}]}"
+				make console execute command "give %player% diamond_axe 1 0 {ench:[{id:32,lvl:2}]}"
+				make console execute command "give %player% diamond_shovel 1 0 {ench:[{id:32,lvl:2}]}"
+				make console execute command "give %player% diamond_hoe 1"
+				make console execute command "give %player% diamond_helmet 1 0 {ench:[{id:0,lvl:2}]}"
+				make console execute command "give %player% diamond_chestplate 1 0 {ench:[{id:0,lvl:2}]}"
+				make console execute command "give %player% diamond_leggings 1 0 {ench:[{id:0,lvl:2}]}"
+				make console execute command "give %player% diamond_boots 1 0 {ench:[{id:0,lvl:2}]}"
+				make console execute command "give %player% golden_apple 10"
+				make console execute command "give %player% cooked_beef 16"
+				send "&aYou have received your &bDiamond kit!"
+			else:
+				send "&cYou havent unlocked that kit yet!"
+		if arg-1 is "starter":
+			if player has permission "kit.starter":
+				make console execute command "give %player% stone_sword 1"
+				make console execute command "give %player% stone_pickaxe 1"
+				make console execute command "give %player% stone_axe 1"
+				make console execute command "give %player% stone_shovel 1"
+				make console execute command "give %player% stone_hoe 1"
+				make console execute command "give %player% chainmail_helmet 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% chainmail_chestplate 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% chainmail_leggings 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% diamond_boots 1 0 {ench:[{id:0,lvl:1}]}"
+				make console execute command "give %player% golden_apple 10"
+				make console execute command "give %player% cooked_beef 16"
+				send "&aYou have received your &7Starter kit!"
+			else:
+				send "&cYou havent unlocked this kit yet!"
+		if arg-1 is "god":
+			if player has permission "kit.god":
+				make console execute command "give %player% diamond_sword 1 0 {ench:[{id:16,lvl:6}]}"
+				make console execute command "give %player% diamond_pickaxe 1 0 {ench:[{id:32,lvl:6}]}"
+				make console execute command "give %player% diamond_axe 1 0 {ench:[{id:32,lvl:6}]}"
+				make console execute command "give %player% diamond_shovel 1 0 {ench:[{id:32,lvl:6}]}"
+				make console execute command "give %player% diamond_hoe 1"
+				make console execute command "give %player% diamond_helmet 1 0 {ench:[{id:0,lvl:5},{id:1,lvl:5}]},{id:34,lvl:6}"
+				make console execute command "give %player% diamond_chestplate 1 0 {ench:[{id:0,lvl:5},{id:1,lvl:5},{id:34,lvl:6}]}"
+				make console execute command "give %player% diamond_leggings 1 0 {ench:[{id:0,lvl:5},{id:1,lvl:5},{id:34,lvl:6}]}"
+				make console execute command "give %player% diamond_boots 1 0 {ench:[{id:0,lvl:5},{id:1,lvl:5},{id:34,lvl:6}]}"
+				make console execute command "give %player% golden_apple 10"
+				make console execute command "give %player% cooked_beef 16"
+				send "&aYou have received your &cGod kit!"
+			else:
+				send "you havent unlocked this kit yet!"
+		if arg-1 is "witch":
+			if player has permission "kit.witch":
+				make console execute command "give %player% 373:8258 2"
+				make console execute command "give %player% 373:8267 2"
+				make console execute command "give %player% 373:8289 2"
+				make console execute command "give %player% 373:8197 5"
+				make console execute command "give %player% 335 6"
+				send "&aYou have received your &dWitch kit!"
+			else:
+				send "You havent unlocked this kit yet!"
+
+					
+					
+				
+			
